@@ -27,7 +27,7 @@ const landing = () => {
             to create brands, products, and messages from first-timers to Zara,
             BBC, Arco, Forbes... How? See the
             <div className="flex gap-1">
-              <p className=" opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out cursor-pointer">
+              <p className=" opacity-70 hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer">
                 work
                 <Image
                   className="inline-flex ml-1"
@@ -40,7 +40,7 @@ const landing = () => {
 
               <span>or get an </span>
               
-              <p className="opacity-70 hover:opacity-100 transition-all duration-200 ease-in-out cursor-pointer">
+              <p className="opacity-70 hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer">
                 intro
                 <Image
                   className="inline-flex ml-1"
