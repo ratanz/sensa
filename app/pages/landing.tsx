@@ -17,7 +17,6 @@ const Landing = () => {
 
       </div>
 
-
       {/* main-text */}
       <div className=" absolute top-0 text-container flex w-full h-screen">
         {/* left side */}
@@ -76,10 +75,6 @@ const Landing = () => {
           </div>
 
       </div>
-
-      {/* right side */}
-
-
     </>
   );
 };
