@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
-const landing = () => {
+const videos = [
+  "/videos/video1.mp4",
+  "/videos/video2.mp4",
+  "/videos/video3.mp4",
+]
+
+const Landing = () => {
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  
+  useEffect(() => {
+    // Set up timer to change videos
+    const videoTimer = setTimeout(() => {
+      setIsTransitioning(true);
+      
+      // Wait for fade out transition before changing video
+      setTimeout(() => {
+        setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+        setIsTransitioning(false);
+      }, 1000); // 1 second for fade out transition
+      
+    }, 5000); // Change video every 5 seconds
+    
+    return () => {
+      clearTimeout(videoTimer);
+    };
+  }, [currentVideoIndex]);
+  
   return (
     <>
 
-      {/* bg image */}
-      <div className="w-full h-full relative">
+
+      <div className=" relative bg-image">
         <Image
           src="/assets/bg-sensa.avif"
           alt=""
@@ -14,10 +41,12 @@ const landing = () => {
           width={1000}
           height={1000}
         />
+
       </div>
 
+
       {/* main-text */}
-      <div className="text-container ">
+      <div className=" absolute top-0 text-container flex w-full h-screen">
         {/* left side */}
         <div className="absolute w-70 top-1/3 left-30 text-white">
           <h1 className="text-7xl font-bold border-b  border-white/20">
@@ -61,13 +90,29 @@ const landing = () => {
           </div>
         </div>
 
-        {/* right side */}
 
+        <div className="videos absolute right-0 w-[70vw] h-full z-50">
+          <div 
+            className={`transition-opacity duration-1000 ${isTransitioning ? 'opacity-0' : 'opacity-100'}`}
+          >
+            <video 
+              className="w-full h-full object-cover" 
+              src={videos[currentVideoIndex]} 
+              autoPlay 
+              muted 
+              onEnded={() => setCurrentVideoIndex((prevIndex) => (prevIndex + 1) % videos.length)}
+            />
+          </div>
+        </div>
 
 
       </div>
+
+      {/* right side */}
+
+
     </>
   );
 };
 
-export default landing;
+export default Landing;
