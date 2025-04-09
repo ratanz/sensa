@@ -2,7 +2,6 @@
 import Image from "next/image";
 
 const Landing = () => {
-  
   return (
     <>
       <div className=" relative bg-image">
@@ -59,7 +58,6 @@ const Landing = () => {
             </div>
           </div>
         </div>
-
 
         <div className="videos absolute top-0 right-0 w-[70vw] h-screen ">
               <video
