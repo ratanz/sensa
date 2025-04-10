@@ -4,7 +4,9 @@ import Image from "next/image";
 const Landing = () => {
   return (
     <>
-      <div className=" relative bg-image">
+
+    {/* may use this as bg later. */}
+      {/* <div className=" relative bg-image">
         <Image
           src="/assets/bg-sensa.avif"
           alt=""
@@ -12,10 +14,10 @@ const Landing = () => {
           width={1000}
           height={1000}
         />
-      </div>
+      </div> */}
 
       {/* main-text */}
-      <div className=" absolute top-0 text-container flex w-full h-screen">
+      <div className="bg-black absolute top-0 text-container flex w-full h-screen">
         {/* left side */}
         <div className="absolute w-70 top-1/3 left-30 text-white">
           <h1 className="text-7xl font-bold border-b  border-white/20">
@@ -62,7 +64,7 @@ const Landing = () => {
         <div className="videos absolute top-0 right-0 w-[70vw] h-screen ">
               <video
                 className="w-full h-full object-cover"
-                src="/videos/video2.mp4"
+                src="/videos/sensaa.mp4"
                 autoPlay
                 muted
                 playsInline
