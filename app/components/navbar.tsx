@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Navbar = () => {
+  // State to track scroll progress (0 to 100)
+  const [scrollProgress, setScrollProgress] = useState(0);
+  
+  // Function to calculate scroll progress
+  const calculateScrollProgress = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    setScrollProgress(Math.min(Math.max(0, scrollPercent), 100)); // Ensure value is between 0-100
+  };
+
+  useEffect(() => {
+      // Add scroll event listener
+      window.addEventListener('scroll', calculateScrollProgress);
+      
+      // Initial calculation
+      calculateScrollProgress();
+      
+      // Clean up event listener
+      return () => window.removeEventListener('scroll', calculateScrollProgress);
+    
+  }, []);
+  
   return (
     <div className="main px-24 py-5  h-40 w-full fixed bottom-0 ">
       <div className="wrapper">
@@ -10,8 +34,6 @@ const Navbar = () => {
        
         <div className="logo flex items-center gap-2">
           <h1 className="font-bold text-3xl">Sensa</h1>
-   
-
           <svg className="mt-2" width="20" height="20" viewBox="0 0 200 200">
             <g clipPath="url(#__lottie_element_68)">
               <g
@@ -80,9 +102,17 @@ const Navbar = () => {
             </g>
           </svg>
 
+          <div 
+            className="h-[1px] transition-all duration-300 ease-out" 
+            style={{ 
+              width: `${scrollProgress || 0}%`,
+              backgroundColor: `rgba(255, 255, 255, ${0.4 + ((scrollProgress || 0) / 100) * 0.6})`
+            }}
+          ></div>
+
         </div>
 
-          <p className="font-medium bg-gradient-to-b from-zinc-300 to-zinc-500 text-transparent bg-clip-text">
+          <p className="font-medium text-zinc-200">
           in-house studio for <br /> tomorrow&apos;s ideas
           </p>
         </div>

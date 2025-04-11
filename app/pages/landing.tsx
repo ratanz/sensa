@@ -10,7 +10,7 @@ const Landing = () => {
       <div className="bg-black min-h-screen">
 
         {/* left side */}
-        <div className="absolute w-70 top-1/3 left-30 text-white">
+        <div className="absolute w-70 top-1/3 left-30 text-zinc-200">
           <h1 className="text-7xl font-bold border-b  border-white/20">
             strategy
           </h1>
