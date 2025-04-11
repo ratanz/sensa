@@ -14,7 +14,6 @@ const Navbar = () => {
   return (
     <div className="main px-24 py-5  h-40 w-full fixed bottom-0 ">
       <div className="wrapper">
-        
           <div className="logo flex items-center gap-2">
             <h1 className="font-bold text-3xl">Sensa</h1>
             <svg className="mt-2" width="20" height="20" viewBox="0 0 200 200">
@@ -101,8 +100,8 @@ const Navbar = () => {
                     </div>
                 ))}
             </div>
-
         </div>
+
       </div>
     </div>
   );
