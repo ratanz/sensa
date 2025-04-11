@@ -1,23 +1,14 @@
-
 import Image from "next/image";
+import Navbar from "../components/navbar";  
 
 const Landing = () => {
+
   return (
     <>
 
-    {/* may use this as bg later. */}
-      {/* <div className=" relative bg-image">
-        <Image
-          src="/assets/bg-sensa.avif"
-          alt=""
-          className="w-full h-full bg-center bg-cover opacity-20"
-          width={1000}
-          height={1000}
-        />
-      </div> */}
+      {/* main-content */}
+      <div className="bg-black min-h-screen">
 
-      {/* main-text */}
-      <div className="bg-black absolute top-0 text-container flex w-full h-screen">
         {/* left side */}
         <div className="absolute w-70 top-1/3 left-30 text-white">
           <h1 className="text-7xl font-bold border-b  border-white/20">
@@ -28,9 +19,9 @@ const Landing = () => {
           </h1>
 
           <div className="mt-4 w-80 text-xl">
-            <p>
-              to create brands, products, and messages from first-timers to Zara,
-              BBC, Arco, Forbes... How? See the
+            <p className="">
+              to create brands, products, and messages from first-timers to
+              Zara, BBC, Arco, Forbes... How? See the
             </p>
 
             <div className="flex gap-1">
@@ -45,7 +36,7 @@ const Landing = () => {
                 />
               </p>
 
-              <span>or get an </span>
+              <span >or get an </span>
 
               <p className="opacity-70 hover:opacity-100 transition-all duration-300 ease-in-out cursor-pointer">
                 intro
@@ -62,15 +53,18 @@ const Landing = () => {
         </div>
 
         <div className="videos absolute top-0 right-0 w-[70vw] h-screen ">
-              <video
-                className="w-full h-full object-cover"
-                src="/videos/sensaa.mp4"
-                autoPlay
-                muted
-                playsInline
-                loop
-              />
-          </div>
+          <video
+            className="w-full h-full object-cover"
+            src="/videos/sensaa.mp4"
+            autoPlay
+            muted
+            playsInline
+            loop
+          />
+        </div>
+
+
+        <Navbar />
 
       </div>
     </>
