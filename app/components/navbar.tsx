@@ -1,30 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import AnimatedBar from "../ui/AnimatedBar";
 
 const Navbar = () => {
-  // State to track scroll progress (0 to 100)
-  const [scrollProgress, setScrollProgress] = useState(0);
-  
-  // Function to calculate scroll progress
-  const calculateScrollProgress = () => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-
-    const scrollPercent = (scrollTop / docHeight) * 100;
-    setScrollProgress(Math.min(Math.max(0, scrollPercent), 100)); // Ensure value is between 0-100
-  };
-
-  useEffect(() => {
-      // Add scroll event listener
-      window.addEventListener('scroll', calculateScrollProgress);
-      
-      // Initial calculation
-      calculateScrollProgress();
-      
-      // Clean up event listener
-      return () => window.removeEventListener('scroll', calculateScrollProgress);
-    
-  }, []);
-  
   return (
     <div className="main px-24 py-5  h-40 w-full fixed bottom-0 ">
       <div className="wrapper">
@@ -101,15 +78,7 @@ const Navbar = () => {
               </g>
             </g>
           </svg>
-
-          <div 
-            className="h-[1px] transition-all duration-300 ease-out" 
-            style={{ 
-              width: `${scrollProgress || 0}%`,
-              backgroundColor: `rgba(255, 255, 255, ${0.4 + ((scrollProgress || 0) / 100) * 0.6})`
-            }}
-          ></div>
-
+          <AnimatedBar />
         </div>
 
           <p className="font-medium text-zinc-200">
