@@ -2,13 +2,15 @@
 
 import React from 'react';
 import Landing from './pages/landing';
-import Test from './pages/test';
+import Box from './components/Box';
+import Work from './pages/Work';
 
 export default function Home() {
   return (
     <>
     <Landing />
-    <Test />
+    <Box/>
+    <Work/>
     </>
   );
 }

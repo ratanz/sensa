@@ -12,7 +12,13 @@ const Links = [
 
 const Navbar = () => {
   return (
-    <div className="main px-24 py-5  h-40 w-full fixed bottom-0 ">
+    <>
+    
+    {/* background blur for navbar */}
+    <div className="w-full h-35 fixed  bottom-0 blur-2xl backdrop-blur-sm "></div>
+    <div className="w-full h-30 fixed bottom-0 backdrop-blur-[3px]"></div>
+
+    <div className="main px-24 py-5 h-fit w-full fixed bottom-0">
       <div className="wrapper">
           <div className="logo flex items-center gap-2">
             <h1 className="font-bold text-3xl">Sensa</h1>
@@ -94,7 +100,7 @@ const Navbar = () => {
 
             <div className="links flex px-2 gap-10">
                 {Links.map((link, index) => (
-                    <div key={index} className="link-item flex items-center flex-col justify-center">
+                    <div key={index} className="link-icon flex items-center flex-col justify-center hover:cursor-pointer opacity-75 hover:opacity-100 transition-all duration-150 ease-in">
                         <Image width={27} height={27} src={link.img} alt={link.text} />
                         <span className="text-zinc-200 pt-2">{link.text}</span>
                     </div>
@@ -104,6 +110,7 @@ const Navbar = () => {
 
       </div>
     </div>
+    </>
   );
 };
 

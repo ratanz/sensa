@@ -52,7 +52,7 @@ const Landing = () => {
           </div>
         </div>
 
-        <div className="videos absolute top-0 right-0 w-[70vw] h-screen ">
+        <div className="videos absolute top-0 right-0 w-[70vw] h-screen  ">
           <video
             className="w-full h-full object-cover"
             src="/videos/sensaa.mp4"
