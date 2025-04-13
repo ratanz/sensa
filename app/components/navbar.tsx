@@ -15,7 +15,7 @@ const Navbar = () => {
     <>
     
     {/* background blur for navbar */}
-    <div className="w-full h-34 fixed bottom-0 blur-3xl backdrop-blur-sm "></div>
+    <div className="w-full h-20 fixed bottom-0 blur-3xl backdrop-blur-sm "></div>
     <div className="w-full h-30 fixed bottom-0 backdrop-blur-[3px]"></div>
 
     <div className="main px-24 py-5 h-fit w-full fixed bottom-0">
