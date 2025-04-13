@@ -1,14 +1,13 @@
 import React from "react";
 import WorkTemplate from "../components/WorkTemplate";
-import { useNavbar } from "../context/NavbarContext";
+
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
-  const { setTextColor } = useNavbar();
-  
-  return (
-    <WorkTemplate
-      bgColor="bg-[#FEB3C8]"
+    
+    return (
+      <WorkTemplate
+        bgColor="bg-[#FEB3C8]"
       titleColor="text-[#610033]"
       subtitleColor="text-[#610034bc]"
       title="Klarna"
@@ -19,13 +18,12 @@ export const Klarna = () => {
         </>
       }
       accentColor="#610033"
-      setNavbarTextColor={setTextColor}
     />
   );
 };
 
 export const Cabify = () => {
-  const { setTextColor } = useNavbar();
+
   
   return (
     <WorkTemplate
@@ -40,13 +38,11 @@ export const Cabify = () => {
         </>
       }
       accentColor="#6039C8"
-      setNavbarTextColor={setTextColor}
     />
   );
 };
 
 export const Briteside = () => {
-  const { setTextColor } = useNavbar();
   
   return (
     <WorkTemplate
@@ -61,13 +57,11 @@ export const Briteside = () => {
         </>
       }
       accentColor="#047659"
-      setNavbarTextColor={setTextColor}
     />
   );
 };
 
 export const BBC = () => {
-  const { setTextColor } = useNavbar();
   
   return (
     <WorkTemplate
@@ -82,7 +76,6 @@ export const BBC = () => {
         </>
       }
       accentColor="#FFFFFF"
-      setNavbarTextColor={setTextColor}
     />
   );
 };

@@ -13,7 +13,6 @@ const Links = [
 const Navbar = () => {
   return (
     <>
-    
     {/* background blur for navbar */}
     <div className="w-full h-20 fixed bottom-0 blur-3xl backdrop-blur-sm "></div>
     <div className="w-full h-30 fixed bottom-0 backdrop-blur-[3px]"></div>
