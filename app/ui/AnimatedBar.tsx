@@ -1,8 +1,13 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
+import { useColorContext } from '../context/ColorContext';
 
 const AnimatedBar = () => {
   // State to track scroll progress (0 to 100)
   const [scrollProgress, setScrollProgress] = useState(0);
+  // Use color context to get dynamic colors
+  const { currentColors } = useColorContext();
   
   // Function to calculate scroll progress
   const calculateScrollProgress = () => {
@@ -28,7 +33,7 @@ const AnimatedBar = () => {
       <div 
         className="absolute top-0 left-0 h-[1px] w-full" 
         style={{ 
-                backgroundColor: 'rgba(255, 255, 255, 0.3)' /* Always visible base line */
+                backgroundColor: `${currentColors.barColor.replace('0.5', '0.3')}` /* Always visible base line */
         }}
       ></div>
       
@@ -37,7 +42,7 @@ const AnimatedBar = () => {
         className="absolute top-0 left-0 h-[1px] transition-all duration-300 ease-out" 
         style={{ 
                 width: `${Math.max(0, scrollProgress || 0)}%`,
-                backgroundColor: `rgba(255, 255, 255, ${0.5 + ((scrollProgress || 0) / 100) * 0.7})` /* Stronger color */
+                backgroundColor: currentColors.barColor /* Dynamic color from context */
         }}
       ></div>
     </div>

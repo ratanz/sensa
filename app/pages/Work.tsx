@@ -16,6 +16,7 @@ export const Klarna = () => {
         </>
       }
       accentColor="#610033"
+      sectionColor="pink"
     />
   );
 };
@@ -34,6 +35,7 @@ export const BBC = () => {
         </>
       }
       accentColor="#FFFFFF"
+      sectionColor="darkBlue"
     />
   );
 };
@@ -52,6 +54,7 @@ export const Briteside = () => {
         </>
       }
       accentColor="#047659"
+      sectionColor="yellow"
     />
   );
 };
@@ -70,6 +73,7 @@ export const Cabify = () => {
         </>
       }
       accentColor="#6039C8"
+      sectionColor="lightPurple"
     />
   );
 };
@@ -87,6 +91,7 @@ export const Facebook = () => {
         </>
       }
       accentColor="#1F4E98"
+      sectionColor="darkBlue"
     />
   );
 };
@@ -104,7 +109,8 @@ export const JME = () => {
           Helping one of the top European VC <br /> firms to better tell what makes them different
         </>
       }
-      accentColor="#1F4E98"
+      accentColor="#DFD0BB"
+      sectionColor="navyBlue"
     />
   );
 };

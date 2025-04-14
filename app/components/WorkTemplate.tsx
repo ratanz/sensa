@@ -8,6 +8,7 @@ interface WorkTemplateProps {
   subtitle: ReactNode; // Subtitle content (can be text or JSX)
   accentColor?: string; // Color for accents like borders, arrows
   children?: ReactNode; // Additional content
+  sectionColor?: string; // Color scheme identifier for navbar
 }
 
 const WorkTemplate: React.FC<WorkTemplateProps> = ({
@@ -18,9 +19,28 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
   subtitle,
   accentColor,
   children,
+  sectionColor,
 }) => {
+ 
+  // Determine section color based on background
+  const getSectionColorFromBg = () => {
+    if (bgColor.includes("FEB3C8") || bgColor.includes("pink")) {
+      return "pink";
+    } else if (bgColor.includes("FFEAA0") || bgColor.includes("yellow")) {
+      return "yellow";
+    } else {
+      return "darkBlue";
+    }
+  };
+
+  // Use provided sectionColor or determine from background
+  const dataColorSection = sectionColor || getSectionColorFromBg();
+
   return (
-    <div className={`w-full h-screen ${bgColor}`}>
+    <div 
+      className={`w-full h-screen ${bgColor}`}
+      data-section-color={dataColorSection}
+    >
       <div className="text-container w-1/3 h-full p-20">
         <h1
           className={`text-8xl font-bold leading-tight ${titleColor} border-b border-black/20 pb-1`}
