@@ -70,8 +70,8 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     const handleScroll = () => {
       const sections = document.querySelectorAll('[data-section-color]');
       
-      // Find section at the middle of the viewport
-      const viewportMiddle = window.scrollY + window.innerHeight;
+      // Find section at the start of the viewport
+      const viewportStart = window.scrollY + window.innerHeight;
       
       let activeSection = 'darkBlue'; // Default
       
@@ -80,7 +80,7 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         const sectionTop = rect.top + window.scrollY;
         const sectionBottom = sectionTop + rect.height;
         
-        if (viewportMiddle >= sectionTop && viewportMiddle <= sectionBottom) {
+        if (viewportStart >= sectionTop && viewportStart <= sectionBottom) {
           activeSection = section.getAttribute('data-section-color') || 'darkBlue';
         }
       });
