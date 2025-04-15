@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { ReactNode } from "react";
 
 interface WorkTemplateProps {
@@ -9,6 +10,7 @@ interface WorkTemplateProps {
   accentColor?: string; // Color for accents like borders, arrows
   children?: ReactNode; // Additional content
   sectionColor?: string; // Color scheme identifier for navbar
+  images?: string[]; // Array of image URLs to display
 }
 
 const WorkTemplate: React.FC<WorkTemplateProps> = ({
@@ -20,6 +22,7 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
   accentColor,
   children,
   sectionColor,
+  images = [], // Default to empty array if not provided
 }) => {
  
   // Determine section color based on background
@@ -38,7 +41,7 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
 
   return (
     <div 
-      className={`w-full h-screen ${bgColor}`}
+      className={`relative w-full h-screen ${bgColor}`}
       data-section-color={dataColorSection}
     >
       <div className="text-container w-1/3 h-full p-20">
@@ -80,6 +83,27 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
         </div>
         {children}
       </div>
+      
+      {/* Image gallery section */}
+      {images.length > 0 && (
+        <div className="images-container absolute flex justify-center w-full -bottom-30 px-20 py-10 overflow-hidden">
+          {images.map((imageUrl, index) => (
+            <div 
+              key={index} 
+              className="image-wrapper rounded-lg"
+              style={{ maxWidth: '500px' }}
+            >
+              <Image
+                src={imageUrl} 
+                alt={`${title} showcase ${index + 1}`}
+                width={400}
+                height={300}
+                className="w-full h-96" 
+              />
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

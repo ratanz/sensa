@@ -47,10 +47,10 @@ const Navbar = () => {
   return (
     <>
       {/* background blur for navbar */}
-      <div className="w-full h-20 fixed bottom-0 blur-3xl backdrop-blur-sm "></div>
-      <div className="w-full h-30 fixed bottom-0 backdrop-blur-[3px]"></div>
+      <div className="w-full h-20 fixed bottom-0 blur-3xl backdrop-blur-sm z-50 "></div>
+      <div className="w-full h-30 fixed bottom-0 backdrop-blur-[3px] z-50"></div>
 
-      <div className="main px-24 py-5 h-fit w-full fixed bottom-0">
+      <div className="main px-24 py-5 h-fit w-full fixed bottom-0 z-50">
         <div className="wrapper">
           <div className="logo flex items-center gap-2">
             <h1 className="font-bold text-3xl" style={{ color: currentColors.textColor }}>Sensa</h1>
