@@ -1,6 +1,5 @@
-import Image from "next/image";
-import React, { ReactNode } from "react";
 
+import React, { ReactNode } from "react";
 interface WorkTemplateProps {
   bgColor: string; // Background color
   titleColor: string; // Title text color
@@ -22,9 +21,8 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
   accentColor,
   children,
   sectionColor,
-  images = [], // Default to empty array if not provided
+  // images = [], // Default to empty array if not provided
 }) => {
- 
   // Determine section color based on background
   const getSectionColorFromBg = () => {
     if (bgColor.includes("FEB3C8") || bgColor.includes("pink")) {
@@ -40,7 +38,7 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
   const dataColorSection = sectionColor || getSectionColorFromBg();
 
   return (
-    <div 
+    <div
       className={`relative w-full h-screen ${bgColor}`}
       data-section-color={dataColorSection}
     >
@@ -83,27 +81,7 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
         </div>
         {children}
       </div>
-      
-      {/* Image gallery section */}
-      {images.length > 0 && (
-        <div className="images-container absolute flex justify-center w-full -bottom-30 px-20 py-10 overflow-hidden">
-          {images.map((imageUrl, index) => (
-            <div 
-              key={index} 
-              className="image-wrapper rounded-lg"
-              style={{ maxWidth: '500px' }}
-            >
-              <Image
-                src={imageUrl} 
-                alt={`${title} showcase ${index + 1}`}
-                width={400}
-                height={300}
-                className="w-full h-96" 
-              />
-            </div>
-          ))}
-        </div>
-      )}
+
     </div>
   );
 };
