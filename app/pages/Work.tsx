@@ -42,13 +42,13 @@ export const Klarna = () => {
     },
     visible: {
       opacity: 1,
-      transform: "perspective(1200px) translateY(-120px)",
+      transform: "perspective(1200px) translateY(-140px)",
       transition: {
         type: "spring", 
         stiffness: 30, 
         damping: 15,
         delayChildren: 0.3,
-        staggerChildren: 0.1
+        staggerChildren: 0.2
       }
     }
   };
@@ -176,7 +176,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: -225, y: 40, rotate: -4, delay: 0.3 }}
+          custom={{ x: -225, y: 40, rotate: -4, delay: 0.2 }}
         >
           <div 
             style={{
@@ -219,7 +219,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: 225, y: 40, rotate: 4, delay: 0.4 }}
+          custom={{ x: 225, y: 40, rotate: 4, delay: 0.2 }}
         >
           <div 
             style={{
@@ -262,7 +262,7 @@ export const Klarna = () => {
             zIndex: 3
           }}
           variants={cardVariants}
-          custom={{ x: 0, y: 0, rotate: 0, delay: 0.5 }}
+          custom={{ x: 0, y: 0, rotate: 0, delay: 0.2 }}
         >
           <div 
             style={{
