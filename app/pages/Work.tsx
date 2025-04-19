@@ -25,7 +25,7 @@ export const Klarna = () => {
     },
     visible: (i: { x: number; y: number; rotate: number; delay: number }) => ({
       opacity: 1,
-      transform: `translateX(-90%) perspective(1200px) translateX(${i.x}px) translateY(${i.y}px) rotate(${i.rotate}deg)`,
+      transform: `translateX(-50%) perspective(1200px) translateX(${i.x}px) translateY(${i.y}px) rotate(${i.rotate}deg)`,
       transition: {
         type: "spring", 
         stiffness: 40, 
@@ -45,10 +45,10 @@ export const Klarna = () => {
       transform: "perspective(1200px) translateY(-140px)",
       transition: {
         type: "spring", 
-        stiffness: 30, 
-        damping: 15,
-        delayChildren: 0.3,
-        staggerChildren: 0.2
+        stiffness: 40, 
+        damping: 20,
+        delayChildren: 0.1,
+        staggerChildren: 0.3
       }
     }
   };
@@ -91,7 +91,7 @@ export const Klarna = () => {
             transformOrigin: "center",
           }}
           variants={cardVariants}
-          custom={{ x: -400, y: 90, rotate: -8.00105, delay: 0.1 }}
+          custom={{ x: -400, y: 90, rotate: -8.00105, delay: 0.2 }}
         >
           <div 
             style={{
@@ -219,7 +219,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: 225, y: 40, rotate: 4, delay: 0.2 }}
+          custom={{ x: 225, y: 40, rotate: 4, delay: 0.2}}
         >
           <div 
             style={{
@@ -259,7 +259,7 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
-            zIndex: 3
+            zIndex: 2
           }}
           variants={cardVariants}
           custom={{ x: 0, y: 0, rotate: 0, delay: 0.2 }}
