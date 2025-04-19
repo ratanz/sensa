@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import WorkTemplate from "../components/WorkTemplate";
+import { div } from "motion/react-client";
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
@@ -303,9 +304,8 @@ export const Klarna = () => {
 export const BBC = () => {
   // BBC images
   const bbcImages = [
-    "https://framerusercontent.com/images/lLG8Kf5oCl6eO5dBfA3VmQ3No.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/JL5Q9BxS7FaKMPZ8vhSwyjw2tc.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/hQVBeiRdL9WgdGbwnoVLvYP2grI.jpg?scale-down-to=1024",
+    "https://framerusercontent.com/images/AkYsZUpUCQt44M7tbrHcfQJ6Yto.png",
+    "https://framerusercontent.com/images/XZ9dQO5Y0Kfg5wSnMvcjQnibBEU.png"
   ];
 
   return (
@@ -323,7 +323,27 @@ export const BBC = () => {
       accentColor="#FFFFFF"
       sectionColor="darkBlue"
     >
-      
+      <div className=" absolute left-0 w-screen h-full flex">
+          <motion.div className="w-1/4 relative top-20 left-10">
+            <Image
+              src={bbcImages[0]}
+              alt="image 1"
+              width={650}
+              height={100}
+            />
+          </motion.div>
+
+
+          <motion.div className="relative top-10 w-full h-full">
+            <Image
+              src={bbcImages[1]}
+              alt="image 2"
+              width={1200}
+              height={90}
+            />
+          </motion.div>
+
+      </div>
     </WorkTemplate>
   );
 };
