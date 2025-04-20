@@ -3,7 +3,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ColorProvider } from "./context/ColorContext";
-import LenisScroll from "./providers/LenisScroll";
+// import LenisScroll from "./providers/LenisScroll";
 
 
 export const metadata: Metadata = {

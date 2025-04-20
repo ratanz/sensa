@@ -30,7 +30,7 @@ export const Klarna = () => {
       transition: {
         type: "spring", 
         stiffness: 40, 
-        damping: 15,
+        damping: 10,
         delay: i.delay,
       }
     })
@@ -43,12 +43,12 @@ export const Klarna = () => {
     },
     visible: {
       opacity: 1,
-      transform: "perspective(1200px) translateY(-140px)",
+      transform: "perspective(1200px) translateY(-150px)",
       transition: {
         type: "spring", 
         stiffness: 40, 
         damping: 20,
-        delayChildren: 0.1,
+        delayChildren: 0,
         staggerChildren: 0.3
       }
     }
@@ -92,7 +92,7 @@ export const Klarna = () => {
             transformOrigin: "center",
           }}
           variants={cardVariants}
-          custom={{ x: -400, y: 90, rotate: -8.00105, delay: 0.2 }}
+          custom={{ x: -400, y: 90, rotate: -8.00105, delay: 0.1 }}
         >
           <div 
             style={{
@@ -134,7 +134,7 @@ export const Klarna = () => {
             transformOrigin: "center",
           }}
           variants={cardVariants}
-          custom={{ x: 400, y: 90, rotate: 8.00105, delay: 0.2 }}
+          custom={{ x: 400, y: 90, rotate: 8.00105, delay: 0.1 }}
         >
           <div 
             style={{
@@ -177,7 +177,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: -225, y: 40, rotate: -4, delay: 0.2 }}
+          custom={{ x: -225, y: 40, rotate: -4, delay: 0.1 }}
         >
           <div 
             style={{
@@ -220,7 +220,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: 225, y: 40, rotate: 4, delay: 0.2}}
+          custom={{ x: 225, y: 40, rotate: 4, delay: 0.1}}
         >
           <div 
             style={{
@@ -263,7 +263,7 @@ export const Klarna = () => {
             zIndex: 2
           }}
           variants={cardVariants}
-          custom={{ x: 0, y: 0, rotate: 0, delay: 0.2 }}
+          custom={{ x: 0, y: 0, rotate: 0, delay: 0.1 }}
         >
           <div 
             style={{
@@ -307,7 +307,7 @@ export const BBC = () => {
     "https://framerusercontent.com/images/AkYsZUpUCQt44M7tbrHcfQJ6Yto.png",
     "https://framerusercontent.com/images/XZ9dQO5Y0Kfg5wSnMvcjQnibBEU.png"
   ];
-
+  
   return (
     <WorkTemplate
       bgColor="bg-[#0A0E45]"
@@ -323,8 +323,8 @@ export const BBC = () => {
       accentColor="#FFFFFF"
       sectionColor="darkBlue"
     >
-      <div className=" absolute -left-10 px-2 w-screen h-full flex" >
-          <motion.div data-scroll-container data-scroll-speed={-0.45} className="w-1/3 relative top-20 left-12">
+      <div  className=" absolute -left-10 px-2 w-screen h-full flex" >
+          <motion.div className="w-1/3 relative top-20 left-12">
             <Image
               src={bbcImages[0]}
               alt="image 1"
