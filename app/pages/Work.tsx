@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useAnimation, useInView, useScroll, useTransform, easeOut } from "framer-motion";
 import WorkTemplate from "../components/WorkTemplate";
-import LocomotiveScroll from 'locomotive-scroll';
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
@@ -308,6 +307,28 @@ export const BBC = () => {
     "https://framerusercontent.com/images/XZ9dQO5Y0Kfg5wSnMvcjQnibBEU.png"
   ];
   
+  // Create refs for the container and elements
+  const containerRef = useRef(null);
+  
+  // Use Framer Motion's useScroll hook with enhanced options
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Transform the scroll progress into y-position values with built-in easing for smoother transitions
+  const image1Y = useTransform(
+    scrollYProgress, 
+    [0, 1], 
+    [50, -205],
+  ); 
+  
+  const image2Y = useTransform(
+    scrollYProgress, 
+    [0, 1], 
+    [0, -120],
+  );
+
   return (
     <WorkTemplate
       bgColor="bg-[#0A0E45]"
@@ -323,8 +344,21 @@ export const BBC = () => {
       accentColor="#FFFFFF"
       sectionColor="darkBlue"
     >
-      <div  className=" absolute -left-10 px-2 w-screen h-full flex" >
-          <motion.div className="w-1/3 relative top-20 left-12">
+      <div ref={containerRef} className="absolute -left-10 px-2 w-screen h-full flex">
+          <motion.div 
+            className="w-1/3 relative top-28 left-12"
+            style={{ y: image1Y }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 30, 
+              damping: 50,
+              mass:1.1,
+              restDelta: 0.001
+            }}
+          >
             <Image
               src={bbcImages[0]}
               alt="image 1"
@@ -333,8 +367,20 @@ export const BBC = () => {
             />
           </motion.div>
 
-
-          <motion.div className="relative top-10 w-full h-full">
+          <motion.div 
+            className="relative top-10 w-full h-full"
+            style={{ y: image2Y }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 30, 
+              damping: 40,
+              mass: 1.3,
+              restDelta: 0.001
+            }}
+          >
             <Image
               src={bbcImages[1]}
               alt="image 2"
