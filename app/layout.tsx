@@ -21,11 +21,11 @@ export default function RootLayout({
       <body
         className="antialiased"
       >
-        <LenisScroll>
+        {/* <LenisScroll> */}
           <ColorProvider>
             {children}
           </ColorProvider>
-        </LenisScroll>
+        {/* </LenisScroll> */}
       </body>
     </html>
   );

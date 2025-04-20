@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import WorkTemplate from "../components/WorkTemplate";
-
+import LocomotiveScroll from 'locomotive-scroll';
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
@@ -323,8 +323,8 @@ export const BBC = () => {
       accentColor="#FFFFFF"
       sectionColor="darkBlue"
     >
-      <div className=" absolute -left-10 px-2 w-screen h-full flex">
-          <motion.div className="w-1/3 relative top-20 left-12">
+      <div className=" absolute -left-10 px-2 w-screen h-full flex" >
+          <motion.div data-scroll-container data-scroll-speed={-0.45} className="w-1/3 relative top-20 left-12">
             <Image
               src={bbcImages[0]}
               alt="image 1"
