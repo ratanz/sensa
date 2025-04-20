@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { motion, useAnimation, useInView } from "framer-motion";
 import WorkTemplate from "../components/WorkTemplate";
-import { div } from "motion/react-client";
+
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
@@ -323,12 +323,12 @@ export const BBC = () => {
       accentColor="#FFFFFF"
       sectionColor="darkBlue"
     >
-      <div className=" absolute left-0 w-screen h-full flex">
-          <motion.div className="w-1/4 relative top-20 left-10">
+      <div className=" absolute -left-10 px-2 w-screen h-full flex">
+          <motion.div className="w-1/3 relative top-20 left-12">
             <Image
               src={bbcImages[0]}
               alt="image 1"
-              width={650}
+              width={750}
               height={100}
             />
           </motion.div>
