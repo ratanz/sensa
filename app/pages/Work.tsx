@@ -320,13 +320,13 @@ export const BBC = () => {
   const image1Y = useTransform(
     scrollYProgress, 
     [0, 1], 
-    [50, -205],
+    [50, -600],
   ); 
   
   const image2Y = useTransform(
     scrollYProgress, 
     [0, 1], 
-    [0, -120],
+    [0, -720],
   );
 
   return (
@@ -346,9 +346,9 @@ export const BBC = () => {
     >
       <div ref={containerRef} className="absolute -left-10 px-2 w-screen h-full flex">
           <motion.div 
-            className="w-1/3 relative top-28 left-12"
+            className="w-1/2 relative  top-70 left-18"
             style={{ y: image1Y }}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false }}
             transition={{ 
@@ -368,9 +368,9 @@ export const BBC = () => {
           </motion.div>
 
           <motion.div 
-            className="relative top-10 w-full h-full"
+            className="relative top-72 w-full h-full"
             style={{ y: image2Y }}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 1}}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false }}
             transition={{ 
