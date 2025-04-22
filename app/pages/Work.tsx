@@ -1,57 +1,46 @@
-import React, { useRef, useEffect } from "react";
+import { motion, useScroll, useTransform, easeOut } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
-import { motion, useAnimation, useInView, useScroll, useTransform, easeOut } from "framer-motion";
 import WorkTemplate from "../components/WorkTemplate";
 
 // Create individual project components using the WorkTemplate
 export const Klarna = () => {
   
   const containerRef = useRef(null);
-  const isInView = useInView(containerRef, { once: false, amount: 0.1 });
-  const controls = useAnimation();
   
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
-
-  const cardVariants = {
-    hidden: {
-      opacity: 0,
-      transform: "translateX(-50%) perspective(1200px) translateY(0px)",
-    },
-    visible: (i: { x: number; y: number; rotate: number; delay: number }) => ({
-      opacity: 1,
-      transform: `translateX(-50%) perspective(1200px) translateX(${i.x}px) translateY(${i.y}px) rotate(${i.rotate}deg)`,
-      transition: {
-        type: "spring", 
-        stiffness: 40, 
-        damping: 10,
-        delay: i.delay,
-      }
-    })
-  };
-
-  const containerVariants = {
-    hidden: {
-      opacity: 0,
-      transform: "perspective(1200px) translateY(0px)" 
-    },
-    visible: {
-      opacity: 1,
-      transform: "perspective(1200px) translateY(-150px)",
-      transition: {
-        type: "spring", 
-        stiffness: 40, 
-        damping: 20,
-        delayChildren: 0,
-        staggerChildren: 0.3
-      }
-    }
-  };
+  // Replace isInView and useAnimation with useScroll and useTransform
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+  
+  // Transform values for container based on scroll
+  const containerY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [-50, -250],
+    { ease: easeOut }
+  );
+  
+  // Transform values for card spreading
+  const card1X = useTransform(scrollYProgress, [0, 1], [-400, -600]);
+  const card1Y = useTransform(scrollYProgress, [0, 1], [90, 150]);
+  const card1Rotate = useTransform(scrollYProgress, [0, 1], [-8, -15]);
+  
+  const card2X = useTransform(scrollYProgress, [0, 1], [-225, -350]);
+  const card2Y = useTransform(scrollYProgress, [0, 1], [40, 80]);
+  const card2Rotate = useTransform(scrollYProgress, [0, 1], [-4, -8]);
+  
+  const card4X = useTransform(scrollYProgress, [0, 1], [225, 350]);
+  const card4Y = useTransform(scrollYProgress, [0, 1], [40, 80]);
+  const card4Rotate = useTransform(scrollYProgress, [0, 1], [4, 8]);
+  
+  const card5X = useTransform(scrollYProgress, [0, 1], [400, 600]);
+  const card5Y = useTransform(scrollYProgress, [0, 1], [90, 150]);
+  const card5Rotate = useTransform(scrollYProgress, [0, 1], [8, 15]);
+  
+  // Center card subtle movement
+  const centerY = useTransform(scrollYProgress, [0, 1], [0, -30]);
 
   return (
     <WorkTemplate
@@ -69,18 +58,16 @@ export const Klarna = () => {
       sectionColor="pink"
     >
 
-      {/* Framer-style card layout */}
+      {/* Framer-style card layout with scroll-based spreading */}
       <motion.div 
         ref={containerRef}
         className="absolute right-50 -bottom-[80vh] w-full h-full flex pointer-events-none"
         data-framer-name="klarna cards"
         style={{ 
           willChange: "transform", 
-          perspective: "1200px" 
+          perspective: "1200px",
+          y: containerY
         }}
-        variants={containerVariants}
-        initial="hidden"
-        animate={controls}
       >
         {/* Card 1 - Cart info */}
         <motion.div 
@@ -89,9 +76,12 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
+            x: card1X,
+            y: card1Y,
+            rotate: card1Rotate,
+            translateX: "-50%",
+            perspective: "1200px"
           }}
-          variants={cardVariants}
-          custom={{ x: -400, y: 90, rotate: -8.00105, delay: 0.1 }}
         >
           <div 
             style={{
@@ -131,9 +121,12 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
+            x: card5X,
+            y: card5Y,
+            rotate: card5Rotate,
+            translateX: "-50%",
+            perspective: "1200px"
           }}
-          variants={cardVariants}
-          custom={{ x: 400, y: 90, rotate: 8.00105, delay: 0.1 }}
         >
           <div 
             style={{
@@ -173,10 +166,13 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
-            zIndex: 2
+            zIndex: 2,
+            x: card2X,
+            y: card2Y,
+            rotate: card2Rotate,
+            translateX: "-50%",
+            perspective: "1200px"
           }}
-          variants={cardVariants}
-          custom={{ x: -225, y: 40, rotate: -4, delay: 0.1 }}
         >
           <div 
             style={{
@@ -216,10 +212,13 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
-            zIndex: 2
+            zIndex: 2,
+            x: card4X,
+            y: card4Y,
+            rotate: card4Rotate,
+            translateX: "-50%",
+            perspective: "1200px"
           }}
-          variants={cardVariants}
-          custom={{ x: 225, y: 40, rotate: 4, delay: 0.1}}
         >
           <div 
             style={{
@@ -259,10 +258,11 @@ export const Klarna = () => {
           style={{ 
             willChange: "transform", 
             transformOrigin: "center",
-            zIndex: 2
+            zIndex: 2,
+            y: centerY,
+            translateX: "-50%",
+            perspective: "1200px"
           }}
-          variants={cardVariants}
-          custom={{ x: 0, y: 0, rotate: 0, delay: 0.1 }}
         >
           <div 
             style={{
