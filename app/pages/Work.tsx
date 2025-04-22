@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, easeOut } from "framer-motion";
+import { motion, useScroll, useTransform, cubicBezier, useSpring } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import WorkTemplate from "../components/WorkTemplate";
@@ -8,39 +8,46 @@ export const Klarna = () => {
   
   const containerRef = useRef(null);
   
-  // Replace isInView and useAnimation with useScroll and useTransform
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   });
   
-  // Transform values for container based on scroll
+  // Apply spring physics to scrollYProgress for smoother transitions
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+    mass: 0.5
+  });
+  
+  // Transform values for container based on scroll with spring physics
   const containerY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [-50, -250],
-    { ease: easeOut }
+    smoothProgress,
+    [0, 0.8],
+    [-50, -200],
+    { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) }
   );
   
-  // Transform values for card spreading - start close, end spread out
-  const card1X = useTransform(scrollYProgress, [0, 1], [-100, -600]);
-  const card1Y = useTransform(scrollYProgress, [0, 1], [30, 150]);
-  const card1Rotate = useTransform(scrollYProgress, [0, 1], [-2, -15]);
+  // Transform values for card spreading with spring physics
+  const card1X = useTransform(smoothProgress, [0, 0.8], [-100, -500], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card1Y = useTransform(smoothProgress, [0, 0.8], [30, 120], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card1Rotate = useTransform(smoothProgress, [0, 0.8], [-2, -12], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
   
-  const card2X = useTransform(scrollYProgress, [0, 1], [-60, -350]);
-  const card2Y = useTransform(scrollYProgress, [0, 1], [15, 80]);
-  const card2Rotate = useTransform(scrollYProgress, [0, 1], [-1, -8]);
+  const card2X = useTransform(smoothProgress, [0, 0.8], [-60, -280], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card2Y = useTransform(smoothProgress, [0, 0.8], [15, 60], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card2Rotate = useTransform(smoothProgress, [0, 0.8], [-1, -6], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
   
-  const card4X = useTransform(scrollYProgress, [0, 1], [60, 350]);
-  const card4Y = useTransform(scrollYProgress, [0, 1], [15, 80]);
-  const card4Rotate = useTransform(scrollYProgress, [0, 1], [1, 8]);
+  const card4X = useTransform(smoothProgress, [0, 0.8], [60, 280], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card4Y = useTransform(smoothProgress, [0, 0.8], [15, 60], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card4Rotate = useTransform(smoothProgress, [0, 0.8], [1, 6], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
   
-  const card5X = useTransform(scrollYProgress, [0, 1], [100, 600]);
-  const card5Y = useTransform(scrollYProgress, [0, 1], [30, 150]);
-  const card5Rotate = useTransform(scrollYProgress, [0, 1], [2, 15]);
+  const card5X = useTransform(smoothProgress, [0, 0.8], [100, 500], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card5Y = useTransform(smoothProgress, [0, 0.8], [30, 120], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
+  const card5Rotate = useTransform(smoothProgress, [0, 0.8], [2, 12], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
   
   // Center card subtle movement
-  const centerY = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const centerY = useTransform(smoothProgress, [0, 0.8], [0, -20], { ease: cubicBezier(0.32, 0.72, 0.35, 0.94) });
 
   return (
     <WorkTemplate
@@ -316,15 +323,23 @@ export const BBC = () => {
     offset: ["start end", "end start"]
   });
   
+  // Apply spring physics to scrollYProgress for smoother transitions
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+    mass: 0.5
+  });
+  
   // Transform the scroll progress into y-position values with built-in easing for smoother transitions
   const image1Y = useTransform(
-    scrollYProgress, 
+    smoothProgress, 
     [0, 1], 
     [50, -580],
   ); 
   
   const image2Y = useTransform(
-    scrollYProgress, 
+    smoothProgress, 
     [0, 1], 
     [0, -700],
   );
