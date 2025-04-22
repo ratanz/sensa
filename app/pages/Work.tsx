@@ -22,22 +22,22 @@ export const Klarna = () => {
     { ease: easeOut }
   );
   
-  // Transform values for card spreading
-  const card1X = useTransform(scrollYProgress, [0, 1], [-400, -600]);
-  const card1Y = useTransform(scrollYProgress, [0, 1], [90, 150]);
-  const card1Rotate = useTransform(scrollYProgress, [0, 1], [-8, -15]);
+  // Transform values for card spreading - start close, end spread out
+  const card1X = useTransform(scrollYProgress, [0, 1], [-100, -600]);
+  const card1Y = useTransform(scrollYProgress, [0, 1], [30, 150]);
+  const card1Rotate = useTransform(scrollYProgress, [0, 1], [-2, -15]);
   
-  const card2X = useTransform(scrollYProgress, [0, 1], [-225, -350]);
-  const card2Y = useTransform(scrollYProgress, [0, 1], [40, 80]);
-  const card2Rotate = useTransform(scrollYProgress, [0, 1], [-4, -8]);
+  const card2X = useTransform(scrollYProgress, [0, 1], [-60, -350]);
+  const card2Y = useTransform(scrollYProgress, [0, 1], [15, 80]);
+  const card2Rotate = useTransform(scrollYProgress, [0, 1], [-1, -8]);
   
-  const card4X = useTransform(scrollYProgress, [0, 1], [225, 350]);
-  const card4Y = useTransform(scrollYProgress, [0, 1], [40, 80]);
-  const card4Rotate = useTransform(scrollYProgress, [0, 1], [4, 8]);
+  const card4X = useTransform(scrollYProgress, [0, 1], [60, 350]);
+  const card4Y = useTransform(scrollYProgress, [0, 1], [15, 80]);
+  const card4Rotate = useTransform(scrollYProgress, [0, 1], [1, 8]);
   
-  const card5X = useTransform(scrollYProgress, [0, 1], [400, 600]);
-  const card5Y = useTransform(scrollYProgress, [0, 1], [90, 150]);
-  const card5Rotate = useTransform(scrollYProgress, [0, 1], [8, 15]);
+  const card5X = useTransform(scrollYProgress, [0, 1], [100, 600]);
+  const card5Y = useTransform(scrollYProgress, [0, 1], [30, 150]);
+  const card5Rotate = useTransform(scrollYProgress, [0, 1], [2, 15]);
   
   // Center card subtle movement
   const centerY = useTransform(scrollYProgress, [0, 1], [0, -30]);
