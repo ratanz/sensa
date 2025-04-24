@@ -413,8 +413,6 @@ export const Briteside = () => {
   // Briteside images
   const britesideImages = [
     "https://framerusercontent.com/images/PfIhsgwZIoMJAOjvkLdOMXejM.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/4r6BQxkpztCYRJpQnBArjuHcA8.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/qJfVdNDrqgNWKAMnI0LrV6ik.jpg?scale-down-to=1024",
   ];
 
   return (
