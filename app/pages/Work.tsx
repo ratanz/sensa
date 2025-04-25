@@ -358,9 +358,9 @@ export const BBC = () => {
   });
 
   // Transform the scroll progress into y-position values with built-in easing for smoother transitions
-  const image1Y = useTransform(smoothProgress, [0, 1], [50, -580]);
+  const image1Y = useTransform(smoothProgress, [0, 1], [50, -590]);
 
-  const image2Y = useTransform(smoothProgress, [0, 1], [0, -700]);
+  const image2Y = useTransform(smoothProgress, [0, 1], [0, -690]);
 
   return (
     <WorkTemplate
