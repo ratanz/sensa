@@ -444,7 +444,7 @@ export const Briteside = () => {
 
   // Transform the scroll progress into y-position values with built-in easing for smoother transitions
   const image1Y = useTransform(smoothProgress, [0, 1], [50, -230]);
-  const image2Y = useTransform(smoothProgress, [0, 1], [0, -230]);
+  const image2Y = useTransform(smoothProgress, [0, 1], [0, -290]);
 
   return (
     <WorkTemplate
@@ -486,7 +486,7 @@ export const Briteside = () => {
         </motion.div>
 
         <motion.div
-          className="relative top-48 right-30"
+          className="relative top-44 right-30"
           style={{ y: image2Y }}
           initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
@@ -500,7 +500,7 @@ export const Briteside = () => {
           }}
         >
           <Image
-          className="w-[170vw]"
+          className="w-[210vw]"
             src={britesideImages[1]}
             alt="image 1"
             width={750}
