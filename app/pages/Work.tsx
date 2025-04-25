@@ -477,7 +477,7 @@ export const Briteside = () => {
           }}
         >
           <Image
-          className="w-[370vw]"
+            className="w-[370vw]"
             src={britesideImages[0]}
             alt="image 1"
             width={850}
@@ -500,14 +500,13 @@ export const Briteside = () => {
           }}
         >
           <Image
-          className="w-[210vw]"
+            className="w-[210vw]"
             src={britesideImages[1]}
             alt="image 1"
             width={750}
             height={100}
           />
         </motion.div>
-
       </div>
     </WorkTemplate>
   );
@@ -516,10 +515,28 @@ export const Briteside = () => {
 export const Cabify = () => {
   // Cabify images
   const cabifyImages = [
-    "https://framerusercontent.com/images/9wOppjzuWl1D1K9RqAHQuTMU0.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/vTO5q1sA5ml9wSgNQoLh1jQVls.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/JYoHRlSYAJikrQpW0aUjMoqRnOE.jpg?scale-down-to=1024",
+    "https://framerusercontent.com/images/0PQJwRZ9wyxxNP4N878T6JU1mI.svg",
+    "https://framerusercontent.com/images/4bMdsaIizitLKhyo29AKaifsZY.png"
   ];
+
+  const containerRef = useRef(null);
+
+  // Use Framer Motion's useScroll hook with enhanced options
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Apply spring physics to scrollYProgress for smoother transitions
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+    mass: 0.5,
+  });
+
+  // Transform the scroll progress into y-position values with built-in easing for smoother transitions
+  const imageFloat = useTransform(smoothProgress, [0, 1], [50, -510]);
 
   return (
     <WorkTemplate
@@ -535,7 +552,47 @@ export const Cabify = () => {
       }
       accentColor="#6039C8"
       sectionColor="lightPurple"
-    ></WorkTemplate>
+    >
+      <div
+        className="absolute left-0 px-2 w-screen h-full flex "
+        ref={containerRef}>
+        
+        <div
+          className="bg-image absolute -top-14"
+        >
+          <Image
+            className="w-full px-10 h-[54vh] overflow-hidden object-cover"
+            src={cabifyImages[0]}
+            alt="image 1"
+            width={750}
+            height={100}
+          />
+        </div>
+
+        <motion.div 
+          style={{ y: imageFloat }}
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{
+            type: "spring",
+            stiffness: 30,
+            damping: 50,
+            mass: 1.1,
+            restDelta: 0.001,
+          }}
+        className="floting-image absolute top-10 flex w-full items-center justify-center">
+          <Image
+            className="w-fit"
+            src={cabifyImages[1]}
+            alt="image 1"
+            width={750}
+            height={100}
+          />
+        </motion.div>
+
+      </div>
+    </WorkTemplate>
   );
 };
 
