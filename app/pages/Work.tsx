@@ -516,7 +516,7 @@ export const Cabify = () => {
   // Cabify images
   const cabifyImages = [
     "https://framerusercontent.com/images/0PQJwRZ9wyxxNP4N878T6JU1mI.svg",
-    "https://framerusercontent.com/images/4bMdsaIizitLKhyo29AKaifsZY.png"
+    "https://framerusercontent.com/images/4bMdsaIizitLKhyo29AKaifsZY.png",
   ];
 
   const containerRef = useRef(null);
@@ -555,11 +555,10 @@ export const Cabify = () => {
     >
       <div
         className="absolute left-0 px-2 w-screen h-full flex "
-        ref={containerRef}>
-        
-        <div
-          className="bg-image absolute -top-14"
-        >
+        ref={containerRef}
+      >
+        {/* normal image used as background */}
+        <div className="bg-image absolute -top-14">
           <Image
             className="w-full px-10 h-[54vh] overflow-hidden object-cover"
             src={cabifyImages[0]}
@@ -569,7 +568,8 @@ export const Cabify = () => {
           />
         </div>
 
-        <motion.div 
+        {/* floating image */}
+        <motion.div
           style={{ y: imageFloat }}
           initial={{ opacity: 1 }}
           whileInView={{ opacity: 1 }}
@@ -581,7 +581,8 @@ export const Cabify = () => {
             mass: 1.1,
             restDelta: 0.001,
           }}
-        className="floting-image absolute top-10 flex w-full items-center justify-center">
+          className="floting-image absolute top-10 flex w-full items-center justify-center"
+        >
           <Image
             className="w-fit"
             src={cabifyImages[1]}
@@ -590,7 +591,6 @@ export const Cabify = () => {
             height={100}
           />
         </motion.div>
-
       </div>
     </WorkTemplate>
   );
