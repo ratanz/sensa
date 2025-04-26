@@ -602,24 +602,26 @@ export const Facebook = () => {
     "https://framerusercontent.com/images/bceZTH0IbcKyBW8fhubQbn8MPo0.png",
   ];
 
-    const containerRef = useRef(null);
+  const containerRef = useRef(null);
 
-    // Use Framer Motion's useScroll hook with enhanced options
-    const { scrollYProgress } = useScroll({
-      target: containerRef,
-      offset: ["start end", "end start"],
-    });
+  // Use Framer Motion's useScroll hook with enhanced options
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
 
-    // Apply spring physics to scrollYProgress for smoother transitions
-    const smoothProgress = useSpring(scrollYProgress, {
-      stiffness: 300,
-      damping: 40,
-      restDelta: 0.001,
-      mass: 0.3,
-    });
+  // Apply spring physics to scrollYProgress for smoother transitions
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+    mass: 0.3,
+  });
 
-    // Transform the scroll progress into y-position values with built-in easing for smoother transitions
-    const imageFloat = useTransform(smoothProgress, [0, 1], [50, -190]);
+  // Transform the scroll progress into y-position values with built-in easing for smoother transitions
+  const imageFloat = useTransform(smoothProgress, [0, 1], [50, -170]);
+
+  const coinFloat = useTransform(smoothProgress, [0, 1], [50, -440]);
 
   return (
     <WorkTemplate
@@ -635,7 +637,10 @@ export const Facebook = () => {
       accentColor="#1F4E98"
       sectionColor="darkBlue"
     >
-      <div ref={containerRef} className="absolute left-0 px-2 w-screen h-full flex ">
+      <div
+        ref={containerRef}
+        className="absolute left-0 px-2 w-screen h-full flex "
+      >
         {/* normal image used as background */}
         <div className="bg-image w-full justify-center items-center mt-14">
           <Image
@@ -646,7 +651,6 @@ export const Facebook = () => {
             height={100}
           />
         </div>
-
 
         {/* animated person image */}
         <motion.div
@@ -661,7 +665,8 @@ export const Facebook = () => {
             mass: 1.5,
             restDelta: 0.001,
           }}
-          className="person absolute flex w-full justify-center top-44 ">
+          className="person absolute flex w-full justify-center top-48 "
+        >
           <Image
             className=" "
             src="/assets/person.png"
@@ -671,6 +676,29 @@ export const Facebook = () => {
           />
         </motion.div>
 
+        {/* animated coin image */}
+        <motion.div
+          style={{ y: coinFloat }}
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{
+            type: "spring",
+            stiffness: 30,
+            damping: 30,
+            mass: 0.4,
+            restDelta: 0.001,
+          }}
+          className="coin absolute left-1/3 top-1/2 "
+        >
+          <Image
+            className=""
+            src="/assets/coin.png"
+            alt="image 1"
+            width={140}
+            height={100}
+          />
+        </motion.div>
       </div>
     </WorkTemplate>
   );
