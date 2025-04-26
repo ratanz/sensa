@@ -599,10 +599,27 @@ export const Cabify = () => {
 export const Facebook = () => {
   // Facebook images
   const facebookImages = [
-    "https://framerusercontent.com/images/QVEV2DoNM4jdJnK15mIV6GEkWE.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/rtKkQiym9CpLyJ5Qa9ITjk3g7w.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/aQCVdF9vw1PbQK6RlTQNgJO0U.jpg?scale-down-to=1024",
+    "https://framerusercontent.com/images/bceZTH0IbcKyBW8fhubQbn8MPo0.png",
   ];
+
+    const containerRef = useRef(null);
+
+    // Use Framer Motion's useScroll hook with enhanced options
+    const { scrollYProgress } = useScroll({
+      target: containerRef,
+      offset: ["start end", "end start"],
+    });
+
+    // Apply spring physics to scrollYProgress for smoother transitions
+    const smoothProgress = useSpring(scrollYProgress, {
+      stiffness: 300,
+      damping: 40,
+      restDelta: 0.001,
+      mass: 0.3,
+    });
+
+    // Transform the scroll progress into y-position values with built-in easing for smoother transitions
+    const imageFloat = useTransform(smoothProgress, [0, 1], [50, -190]);
 
   return (
     <WorkTemplate
@@ -617,7 +634,45 @@ export const Facebook = () => {
       }
       accentColor="#1F4E98"
       sectionColor="darkBlue"
-    ></WorkTemplate>
+    >
+      <div ref={containerRef} className="absolute left-0 px-2 w-screen h-full flex ">
+        {/* normal image used as background */}
+        <div className="bg-image w-full justify-center items-center mt-14">
+          <Image
+            className="w-full "
+            src={facebookImages[0]}
+            alt="image 1"
+            width={750}
+            height={100}
+          />
+        </div>
+
+
+        {/* animated person image */}
+        <motion.div
+          style={{ y: imageFloat }}
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{
+            type: "spring",
+            stiffness: 80,
+            damping: 90,
+            mass: 1.5,
+            restDelta: 0.001,
+          }}
+          className="person absolute flex w-full justify-center top-44 ">
+          <Image
+            className=" "
+            src="/assets/person.png"
+            alt="image 1"
+            width={200}
+            height={100}
+          />
+        </motion.div>
+
+      </div>
+    </WorkTemplate>
   );
 };
 
@@ -643,7 +698,20 @@ export const JME = () => {
       }
       accentColor="#DFD0BB"
       sectionColor="navyBlue"
-    ></WorkTemplate>
+    >
+      <div className="absolute left-0 px-2 w-screen h-full flex">
+        {/* normal image used as background */}
+        <div className="bg-image flex w-full justify-center items-start mt-14">
+          <Image
+            className="w-full"
+            src={jmeImages[0]}
+            alt="image 1"
+            width={750}
+            height={100}
+          />
+        </div>
+      </div>
+    </WorkTemplate>
   );
 };
 
