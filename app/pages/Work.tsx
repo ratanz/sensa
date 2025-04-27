@@ -604,13 +604,11 @@ export const Facebook = () => {
 
   const containerRef = useRef(null);
 
-  // Use Framer Motion's useScroll hook with enhanced options
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
   });
 
-  // Apply spring physics to scrollYProgress for smoother transitions
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 300,
     damping: 40,
@@ -618,7 +616,6 @@ export const Facebook = () => {
     mass: 0.3,
   });
 
-  // Transform the scroll progress into y-position values with built-in easing for smoother transitions
   const imageFloat = useTransform(smoothProgress, [0, 1], [50, -170]);
 
   const coinFloat = useTransform(smoothProgress, [0, 1], [50, -440]);
@@ -665,7 +662,7 @@ export const Facebook = () => {
             mass: 1.5,
             restDelta: 0.001,
           }}
-          className="person absolute flex w-full justify-center top-48 "
+          className="person absolute flex w-full justify-center top-48"
         >
           <Image
             className=" "
