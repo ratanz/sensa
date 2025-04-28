@@ -704,10 +704,26 @@ export const Facebook = () => {
 export const JME = () => {
   // JME images
   const jmeImages = [
-    "https://framerusercontent.com/images/M0iyWvxeXQ6hwWQQ2m4NkXHXjA.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/iBbTFojRzqSxKf9KKRUu6ReF3s.jpg?scale-down-to=1024",
-    "https://framerusercontent.com/images/kV8Z1O9rn3P4nVKnG9VsXpITl8.jpg?scale-down-to=1024",
+    "https://framerusercontent.com/images/NHrRqKskBgsiRGtWRvDwIshlQ4.png",
+    "https://framerusercontent.com/images/MS1esMeCLLuuBK4r1TRP2QLgSc.png",
   ];
+
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 300,
+    damping: 40,
+    restDelta: 0.001,
+    mass: 0.3,
+  });
+
+  const image1Y = useTransform(smoothProgress, [0, 1], [50, -170]);
+  const image2Y = useTransform(smoothProgress, [0, 1], [50, -300]);
 
   return (
     <WorkTemplate
@@ -724,17 +740,58 @@ export const JME = () => {
       accentColor="#DFD0BB"
       sectionColor="navyBlue"
     >
-      <div className="absolute left-0 px-2 w-screen h-full flex">
-        {/* normal image used as background */}
-        <div className="bg-image flex w-full justify-center items-start mt-14">
+      <div
+        ref={containerRef}
+        className="absolute left-0 px-2 w-full "
+      >
+
+        
+        <motion.div
+          style={{ y: image1Y }}
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{
+            type: "spring",
+            stiffness: 60,
+            damping: 90,
+            mass: 1.8,
+            restDelta: 0.001,
+          }}
+          className="absolute -left-8 top-20"
+        >
           <Image
-            className="w-full"
+            className="w-[80vw] "
+            src={jmeImages[1]}
+            alt="image 1"
+            width={750}
+            height={100}
+          />
+        </motion.div>
+
+        <motion.div
+          style={{ y: image2Y }}
+          initial={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{
+            type: "inertia",
+            stiffness: 30,
+            damping: 130,
+            mass: 1.8,
+            restDelta: 0.30,
+          }}
+          className="absolute w-full flex justify-end top-74 "
+        >
+          <Image
+            className="w-fit"
             src={jmeImages[0]}
             alt="image 1"
             width={750}
             height={100}
           />
-        </div>
+        </motion.div>
+        
       </div>
     </WorkTemplate>
   );
