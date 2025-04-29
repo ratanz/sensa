@@ -740,12 +740,7 @@ export const JME = () => {
       accentColor="#DFD0BB"
       sectionColor="navyBlue"
     >
-      <div
-        ref={containerRef}
-        className="absolute left-0 px-2 w-full "
-      >
-
-        
+      <div ref={containerRef} className="absolute left-0 px-2 w-full ">
         <motion.div
           style={{ y: image1Y }}
           initial={{ opacity: 1 }}
@@ -779,7 +774,7 @@ export const JME = () => {
             stiffness: 30,
             damping: 130,
             mass: 1.8,
-            restDelta: 0.30,
+            restDelta: 0.3,
           }}
           className="absolute w-full flex justify-end top-74 "
         >
@@ -791,7 +786,6 @@ export const JME = () => {
             height={100}
           />
         </motion.div>
-        
       </div>
     </WorkTemplate>
   );
