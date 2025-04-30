@@ -6,24 +6,28 @@ export default function Box() {
         title: "onboarding",
         description:
           "We gather for briefing and, just a few days after, our proposal is ready. All the details are taken care of, including the contract and timings.",
+        video: "sensa-one.mp4"
       },
       {
         number: 2,
         title: "model",
         description:
           "We partner in a monthly or project-based basis, depending on what fits better. Want to cancel? No questions asked. Want to extend? Just let us know.",
+        video: "sensa-two.mp4"
       },
       {
         number: 3,
         title: "sprints",
         description:
           "Together, we iterate, test, and meet weekly to discussing the solutions. We send an async update as well, so everyone's on track.",
+        video: "sensa-three.mp4"
       },
       {
         number: 4,
         title: "handoff",
         description:
           "When our work is done, we document it and arrange governance. We're available to help before, during, and after our collaboration.",
+        video: "sensa-four.mp4"
       },
     ]
   
@@ -46,6 +50,19 @@ export default function Box() {
                 </div>
           
                 <p className="text-zinc-100 leading-relaxed">{step.description}</p>
+
+                <div className="video w-full h-full mt-10 ">
+                  <video 
+                    src={`/videos/${step.video}`} 
+                    muted 
+                    loop 
+                    autoPlay 
+                    playsInline
+                    preload="auto"
+                    className="w-full h-full object-cover"
+                    onError={() => console.error(`Failed to load video: ${step.video}`)}
+                  />
+                </div>
               </div>
             </div>
 
