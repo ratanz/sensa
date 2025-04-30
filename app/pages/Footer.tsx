@@ -5,10 +5,10 @@ import { motion, useInView } from "motion/react"
 
 const Footer = () => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(containerRef, { once: false, margin: "-200px" })
+  const isInView = useInView(containerRef, { once: false, margin: "-300px" })
 
   return (
-    <div className="z-50 absolute bg-black w-full h-screen">
+    <div className="z-0 absolute bg-black w-full h-screen">
       <motion.div 
         ref={containerRef}
         initial={{ opacity: 0, y: 50 }}
@@ -24,14 +24,14 @@ const Footer = () => {
       >
         <div className="relative z-10">
           <motion.h1 
-            initial={{ opacity: 0, x: -70 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -70 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ 
               ease: "easeIn",
               type: "spring",
               mass: 1.1,
               duration: 0.7, 
-              delay: 0.2
+              delay: 0.1
             }}
             className="text-white text-6xl md:text-7xl font-bold pb-3 w-fit border-b border-white/20"
           >
@@ -41,7 +41,7 @@ const Footer = () => {
           <motion.p 
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
             className="text-white/70 text-xl max-w-md mt-4 pb-3 border-b border-white/20"
           >
             We kept it short, but there&apos;s more to see. <br />
@@ -51,9 +51,15 @@ const Footer = () => {
           </motion.p>
 
           <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+            transition={{ 
+              type: "spring",
+              mass : 0.4,
+              duration: 0.7,
+              damping : 10,
+              delay: 0.5
+            }}
             className="space-y-2 mt-4"
           >
             <Link href="#" className="flex items-center text-white/80 hover:text-white transition-colors group">

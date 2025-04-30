@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ColorProvider } from "./context/ColorContext";
-// import LenisScroll from "./providers/LenisScroll";
+import LenisScroll from "./providers/LenisScroll";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        {/* <LenisScroll> */}
+        <LenisScroll>
         <ColorProvider>{children}</ColorProvider>
-        {/* </LenisScroll> */}
+        </LenisScroll>  
       </body>
     </html>
   );
