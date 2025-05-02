@@ -48,20 +48,68 @@ export default function Box() {
                   {step.number}
                 </div>
 
-                <h3 className="text-3xl font-bold leading-tight">{step.title}</h3>
+                <motion.h3
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{
+                    staggerChildren: 0.10
+                  }}
+                  className="text-3xl font-bold leading-tight flex flex-wrap"
+                >
+                  {step.title.split('').map((word, i) => (
+                    <motion.span
+                      key={i}
+                      initial={{ y: 10, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: false, amount: 0.9 }}
+                      transition={{
+                        duration: 0.7,
+                        delay: i * 0.15,
+                        ease: [0.22, 1, 0.36, 1]
+                      }}
+                      className=""
+                    >
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.h3>
                 <span className="border-t border-white/10 w-full"></span>
               </div>
 
-              <p className="text-zinc-100 leading-relaxed">{step.description}</p>
+              <motion.p
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{
+                  staggerChildren: 0.1}}
 
+                className="text-lg font-light text-zinc-400"
+              >
+                {step.description.split('').map((char, i) => (
+                  <motion.span
+                    key={i}
+                    initial={{ y: 10, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: false, amount: 0.9 }}
+                    transition={{
+                      duration: 3,
+                      delay: i * 0.01,
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+              </motion.p>
+
+              {/* video boxes */}
               <motion.div
                 initial={{ x: -100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{
-                  duration: 0.8,
-                  delay: 0.4,
+                  duration: 0.7,
+                  delay: 1.5,
                   staggerChildren: 0.2,
-                  bounce: 0.5, 
+                  bounce: 0.3,
                   type: "spring"
                 }}
                 className="video w-full h-full mt-14 ">
@@ -76,6 +124,7 @@ export default function Box() {
                   onError={() => console.error(`Failed to load video: ${step.video}`)}
                 />
               </motion.div>
+
             </div>
           </div>
 
