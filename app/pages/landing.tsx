@@ -63,9 +63,7 @@ const Landing = () => {
           />
         </div>
 
-
         <Navbar />
-
       </div>
     </>
   );

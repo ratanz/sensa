@@ -1,6 +1,5 @@
 import { motion } from "motion/react"
 
-
 export default function Box() {
 
   const steps = [
