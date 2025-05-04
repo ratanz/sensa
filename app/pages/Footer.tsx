@@ -55,7 +55,7 @@ const Footer = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ 
               type: "spring",
-              mass : 0.4,
+              mass : 0.3,
               duration: 0.7,
               damping : 10,
               delay: 0.5
