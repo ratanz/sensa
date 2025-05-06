@@ -58,11 +58,11 @@ export default function Box() {
                   {step.title.split('').map((word, i) => (
                     <motion.span
                       key={i}
-                      initial={{ y: 10, opacity: 0 }}
+                      initial={{ y: 20, opacity: 0 }}
                       whileInView={{ y: 0, opacity: 1 }}
                       viewport={{ once: false, amount: 0.9 }}
                       transition={{
-                        duration: 0.7,
+                        duration: 0.8,
                         delay: i * 0.15,
                         ease: [0.22, 1, 0.36, 1]
                       }}
@@ -90,7 +90,7 @@ export default function Box() {
                     whileInView={{ y: 0, opacity: 1 }}
                     viewport={{ once: false, amount: 0.9 }}
                     transition={{
-                      duration: 3,
+                      duration: 2,
                       delay: i * 0.01,
                       ease: [0.22, 1, 0.36, 1]
                     }}

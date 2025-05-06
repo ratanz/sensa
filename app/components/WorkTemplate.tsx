@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from "react";
 interface WorkTemplateProps {
   bgColor: string; // Background color
@@ -23,33 +22,29 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
   sectionColor,
   // images = [], // Default to empty array if not provided
 }) => {
-  // Determine section color based on background
-  const getSectionColorFromBg = () => {
-    if (bgColor.includes("FEB3C8") || bgColor.includes("pink")) {
-      return "pink";
-    } else if (bgColor.includes("FFEAA0") || bgColor.includes("yellow")) {
-      return "yellow";
-    } else {
-      return "darkBlue";
-    }
-  };
 
   // Use provided sectionColor or determine from background
-  const dataColorSection = sectionColor || getSectionColorFromBg();
+  const dataColorSection = sectionColor 
+  
+  // Extract color name for borders from titleColor or use accentColor
+  const borderColor = accentColor
 
   return (
     <div
       className={`relative w-full h-screen ${bgColor}`}
       data-section-color={dataColorSection}
     >
-      <div className="text-container w-1/3 h-full p-20">
+      <div className="text-container w-1/3 h-fit p-20"
+        >
         <h1
-          className={`text-8xl font-bold leading-tight ${titleColor} border-b border-black/20 pb-1`}
+          className={`text-8xl font-bold leading-tight ${titleColor} border-b pb-1`}
+          style={{ borderColor: `rgba(var(--${borderColor} ), 0.01)` }}
         >
           {title}
         </h1>
         <div
-          className={`text-xl font-medium leading-relaxed ${subtitleColor} mt-2 border-b border-black/20 pb-4`}
+          className={`text-xl font-medium leading-relaxed ${subtitleColor} mt-2 border-b pb-4`}
+          style={{ borderColor: `rgba(var(--${borderColor}), 0.01)` }}
         >
           {subtitle}
         </div>
