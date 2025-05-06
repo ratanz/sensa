@@ -43,8 +43,8 @@ const WorkTemplate: React.FC<WorkTemplateProps> = ({
           {title}
         </h1>
         <div
-          className={`text-xl font-medium leading-relaxed ${subtitleColor} mt-2 border-b pb-4`}
-          style={{ borderColor: `rgba(var(--${borderColor}), 0.01)` }}
+          className={`text-xl font-medium leading-relaxed ${subtitleColor} mt-8 border-b pb-8`}
+          style={{ borderColor: `rgba(var(--${borderColor})0.)` }}
         >
           {subtitle}
         </div>
