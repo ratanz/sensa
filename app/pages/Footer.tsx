@@ -8,7 +8,7 @@ const Footer = () => {
   const isInView = useInView(containerRef, { once: false, margin: "-300px" })
 
   return (
-    <div className="z-0 absolute bg-black w-full h-screen">
+    <div className="z-0 absolute bg-black w-full h-screen" id="footer-section">
       <motion.div 
         ref={containerRef}
         initial={{ opacity: 0, y: 50 }}

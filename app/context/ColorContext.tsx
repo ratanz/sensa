@@ -49,17 +49,20 @@ export const colorSchemes: Record<string, SectionColors> = {
 type ColorContextType = {
   currentColors: SectionColors;
   setCurrentSection: (section: string) => void;
+  isFooterVisible: boolean;
 };
 
 const ColorContext = createContext<ColorContextType>({
   currentColors: defaultColors,
   setCurrentSection: () => {},
+  isFooterVisible: false,
 });
 
 export const useColorContext = () => useContext(ColorContext);
 
 export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentColors, setCurrentColors] = useState<SectionColors>(defaultColors);
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
 
   const setCurrentSection = (section: string) => {
     setCurrentColors(colorSchemes[section] || defaultColors);
@@ -69,6 +72,7 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   useEffect(() => {
     const handleScroll = () => {
       const sections = document.querySelectorAll('[data-section-color]');
+      const footer = document.getElementById('footer-section');
       
       // Find section at the start of the viewport
       const viewportStart = window.scrollY + window.innerHeight;
@@ -86,6 +90,12 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       });
       
       setCurrentSection(activeSection);
+      
+      // Check if footer is visible
+      if (footer) {
+        const rect = footer.getBoundingClientRect();
+        setIsFooterVisible(rect.top <= window.innerHeight && rect.bottom >= window.innerHeight - 100);
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -96,7 +106,7 @@ export const ColorProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   }, []);
 
   return (
-    <ColorContext.Provider value={{ currentColors, setCurrentSection }}>
+    <ColorContext.Provider value={{ currentColors, setCurrentSection, isFooterVisible }}>
       {children}
     </ColorContext.Provider>
   );
