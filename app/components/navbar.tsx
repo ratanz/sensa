@@ -41,7 +41,7 @@ const Navbar = () => {
     }
 
     // Default fallback for other colors
-    return 'brightness(0)'; // Default to black
+    return 'brightness(0)'; 
   }, [currentColors.textColor]);
 
   return (
