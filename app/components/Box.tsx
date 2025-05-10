@@ -126,8 +126,8 @@ export default function Box() {
 
             </div>
           </div>
-
         ))}
+        
       </div>
     </div>
   )
